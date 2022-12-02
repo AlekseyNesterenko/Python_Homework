@@ -3,10 +3,6 @@
 # - [2, 3, 5, 9, 3] -> на нечётных позициях элементы 3 и 9, ответ: 12
 
 list = [i for i in map(int, input('Введите числа через пробел: \n').split())]
-list_odd_position = []                    # список чисел на нечетных позициях из чисел изначального списка для проверки работоспособности
-sum = 0
-for i in range(1,len(list), 2):
-    list_odd_position.append(list[i])
-    sum += list[i]
+list_odd_position = list[1::2]                    # список чисел на нечетных позициях из чисел изначального списка для проверки работоспособности
 print(list_odd_position)
-print(sum)
+print(sum(list_odd_position))
