@@ -4,4 +4,6 @@
 
 from math import pi
 num = int(input('Введите количество знков после запятой pi: \n'))
-print(pi%3)
+n = f'.{num+1}'
+print(pi)
+print(format(pi, n))
