@@ -5,11 +5,9 @@
 
 list = [i for i in map(int, input('Введите числа через пробел: \n').split())]
 product_pairs = []
-for i in range(len(list)//2+1):
+for i in range(len(list)//2+len(list)%2):   # len(list)//2+len(list)%2
     a = list[i] * list[len(list)-1-i]
     product_pairs.append(a)
-if len(list) % 2 == 0:
-    product_pairs.pop(len(product_pairs)-1)  # небольшой костыль, но по-доугому получалось намного больше кода
 print(product_pairs)
 
 
