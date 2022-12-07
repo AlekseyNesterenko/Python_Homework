@@ -28,8 +28,10 @@ def Recovery(text):  # восстановление
         i += 2
     return data
 
-with open('Compression.txt', 'r', encoding='UTF-8') as file1:
+with open(r'Homework5/Compression.txt', encoding='UTF-8') as file1:
     print(Compression(file1.read()))
 
-with open('Recovery.txt', 'r', encoding='UTF-8') as file2:
-    print(Compression(file2.read()))
+with open(r'Homework5/Recovery.txt', encoding='UTF-8') as file2:
+    print(Recovery(file2.read()))
+
+
