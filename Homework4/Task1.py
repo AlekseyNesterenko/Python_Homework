@@ -4,6 +4,5 @@
 
 from math import pi
 num = int(input('Введите количество знков после запятой pi: \n'))
-n = f'.{num+1}'
-print(pi)
-print(format(pi, n))
+n = str(pi)
+print(n[:num+2])
