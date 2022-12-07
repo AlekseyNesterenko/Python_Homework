@@ -8,3 +8,7 @@
 #         ввод: 3 2
 #     if i%2 == 1:
 #         print('2 игрок')
+
+doska = list(range(1,10))
+for i in range(3):
+    print ("|", doska[0+i*3], "|", doska[1+i*3], "|",doska[2+i*3], "|")
