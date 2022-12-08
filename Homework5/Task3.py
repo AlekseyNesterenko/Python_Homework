@@ -24,7 +24,7 @@ def Recovery(text):  # восстановление
     data = ''
     i = 0
     while i < len(text):
-        data += str(text[i+1]) * int(text[i])
+        data += text[i+1] * int(text[i])
         i += 2
     return data
 
