@@ -25,9 +25,9 @@ def controller():
     elif action == "2":
         choice = 1
         while choice == 1:
-            last_name = input('Введите фамилию ученика \n0 для выхода из программы')
+            last_name = input('Введите фамилию ученика \n0 для выхода из программы\n')
             if last_name == '0':
-                choice == 0
+                choice = 0
             else:
                 student_UI.see_result(last_name)
         controller()
