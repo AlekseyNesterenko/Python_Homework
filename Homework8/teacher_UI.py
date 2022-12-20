@@ -1,38 +1,14 @@
-import Data_work
+from Data_work import add_student, add_score
 
 def add_student():
-    name = input("Введите имя: ")
     surname = input("Введите Фамилию: ")
-    group = input("Введите группу: ")
-    return Student(name, surname, group)
+    name = input("Введите имя: ")
+    group = input("Введите класс: ")
+    add_student([surname, name, group])
 
 
-def add_score(student):
+def add_score():
+    last_name = input("Введите фамилию ученика: ")
     subject = input("Введите предмет: ")
-    score = input("Введите оценку: ")
-    student.add_score(subject, score)
-
-
-def input_action():
-    print("| Добавить ученика: 1 | "
-        "Добавить оценку: 2 | "
-        "Сохранить базу и выйти: 3 | "
-        "Вывести данные: 4 | ")
-    action = int(input("Введите действие: "))
-    if action == '1':
-        add_student()
-    if action == '2':
-        add_score()
-    if action == '3':
-            pass
-    if action == '4':
-            Data_work.load_db()
-            
-
-
-def print_data(data):
-    sep = max(len(str(i)) for i in data) * "-"
-    print(sep)
-    for value in data:
-        print(value)
-    print(sep)
+    score = input("Введите оценку или оценки через пробел: ").split()
+    add_score(last_name, subject, score)

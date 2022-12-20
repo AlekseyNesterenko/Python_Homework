@@ -1,7 +1,4 @@
-def get_score(student):
-    return student.subjects
+from Data_work import get_student
 
-
-def print_score(student):
-    for subject, score in get_score(student).items():
-        print(f"{subject}: {score}")
+def see_result(last_name):
+    get_student(last_name)
