@@ -9,7 +9,7 @@ import logic, Logger
 A = 0
 
 
-app = ApplicationBuilder().token("5801378497:AAGDg-L8eFJNMPsqo57l-kVuXgJ5dmuCpF8").build()
+app = ApplicationBuilder().token("TOKEN").build()
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
