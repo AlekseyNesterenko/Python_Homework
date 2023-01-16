@@ -2,7 +2,7 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, MessageHandler, filters, ConversationHandler
 from random import randint
 
-total_candy = 120
+
 my_turn = 0
 bot = 1
 
@@ -15,21 +15,27 @@ async def del_word(update: Update, context: ContextTypes.DEFAULT_TYPE):
     data = list(filter(lambda x: 'абв' not in x, text.split()))
     await update.message.reply_text(f'{" ".join(data)}')
 
+
+
+
+
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(f'Так и не доиграли, пока!')
 
 async def game(update: Update, context: ContextTypes.DEFAULT_TYPE):
     global total_candy
-    await update.message.reply_text(f'Начнем игру! \nНа столе лежит {total_candy} конфет.\nХод Игрока. Какое количесвто конфет взять:')   
+    total_candy = randint(120,125)
+    await update.message.reply_text(f'Начнем игру! \nНа столе лежит {total_candy} конфет.')   
     return my_turn
 
 
 async def gamer_turn(update: Update, context: ContextTypes.DEFAULT_TYPE):
     global total_candy
+    await update.message.reply_text('Ход Игрока. Какое количесвто конфет взять:')  
     player = int(update.message.text)
     if total_candy == 0:
         await update.message.reply_text('Игрок победил!')
-        return
+        return ConversationHandler.END
     elif 0 < player < 29:
         total_candy -= player
         await update.message.reply_text(f'На столе осталось {total_candy} конфет.')
@@ -42,10 +48,9 @@ async def gamer_turn(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def bot_turn(update: Update, context: ContextTypes.DEFAULT_TYPE):
     global total_candy
-
     if total_candy <= 28:
         await update.message.reply_text(f'БОТ забирает последние конфеты и выигрывает!')
-        return
+        return ConversationHandler.END
     else: 
         bot_take = total_candy % 29
         if bot_take == 0:
@@ -53,3 +58,4 @@ async def bot_turn(update: Update, context: ContextTypes.DEFAULT_TYPE):
         total_candy -= bot_take
         await update.message.reply_text(f'БОТ взял {bot_take} конфет\nНа столе осталось {total_candy} конфет.')
         return my_turn
+
